@@ -1,7 +1,7 @@
 {
   "name": "create-html5-game",
   "author": "Kun Chen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "bin": {
     "create-html5-game": "./bin.js"
@@ -10,7 +10,8 @@
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "template"
   ],
   "engines": {
     "node": ">=14"
