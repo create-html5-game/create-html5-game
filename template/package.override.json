@@ -1,0 +1,55 @@
+{
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "shx rm -rf build && cross-env REACT_APP_TARGET=FBINSTANT PUBLIC_URL=./ react-scripts build && node ./tools/fixIndexHtml.js && shx rm build/static/js/*.map",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": ["eslint:recommended"],
+    "parser": "babel-eslint",
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "overrides": [
+      {
+        "files": ["**/*.ts", "**/*.tsx"],
+        "env": {
+          "browser": true,
+          "es6": true,
+          "node": true
+        },
+        "extends": ["react-app", "prettier"],
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+          "project": "./tsconfig.json"
+        },
+        "rules": {
+          "react/react-in-jsx-scope": "off"
+        },
+        "settings": {
+          "react": {
+            "version": "detect"
+          }
+        }
+      }
+    ]
+  },
+  "eslintIgnore": ["node_modules", "dist", "build", "__generated__"],
+  "prettier": {
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "importOrder": ["\\.css$", "^\\."],
+    "importOrderSeparation": true
+  }
+}

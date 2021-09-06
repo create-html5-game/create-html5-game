@@ -1,0 +1,83 @@
+{
+  "name": "create-html5-game",
+  "author": "Kun Chen",
+  "version": "1.0.0",
+  "license": "MIT",
+  "bin": {
+    "create-html5-game": "./bin.js"
+  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "publish:no-bump": "git checkout publish-to-npm && git pull && git merge --no-edit --no-ff main && git push && git checkout main",
+    "publish:patch": "git checkout main && bump patch -t \"v%s\" -p && yarn publish:no-bump",
+    "publish:minor": "git checkout main && bump minor -t \"v%s\" -p && yarn publish:no-bump",
+    "publish:major": "git checkout main && bump major -t \"v%s\" -p && yarn publish:no-bump",
+    "pre:patch": "bump prepatch -t \"v%s-beta\" -p && cross-env npm_config_registry=https://registry.npmjs.org/ npm publish --tag beta",
+    "pre:minor": "bump preminor -t \"v%s-beta\" -p && cross-env npm_config_registry=https://registry.npmjs.org/ npm publish --tag beta",
+    "pre:major": "bump premajor -t \"v%s-beta\" -p && cross-env npm_config_registry=https://registry.npmjs.org/ npm publish --tag beta"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 80,
+    "tabWidth": 2,
+    "importOrder": [
+      "^\\."
+    ],
+    "importOrderSeparation": true
+  },
+  "module": "dist/create-html5-game.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/create-html5-game.cjs.production.min.js",
+      "limit": "512 KB"
+    },
+    {
+      "path": "dist/create-html5-game.esm.js",
+      "limit": "512 KB"
+    }
+  ],
+  "peerDependencies": {},
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.10.2",
+    "@trivago/prettier-plugin-sort-imports": "^2.0.2",
+    "@types/fs-extra": "^9.0.11",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "prettier": "^2.2.1",
+    "shx": "^0.3.3",
+    "size-limit": "^4.10.2",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4",
+    "version-bump-prompt": "^6.1.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^7.2.0",
+    "fs-extra": "^9.1.0",
+    "moment": "^2.29.1"
+  }
+}
