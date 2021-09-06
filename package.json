@@ -10,7 +10,8 @@
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "template"
   ],
   "engines": {
     "node": ">=14"
